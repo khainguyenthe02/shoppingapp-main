@@ -10,6 +10,7 @@ import ProductManager from './ProductManager.jsx';
 import ProductDetail from './ProductDetail.jsx';
 import EmployeeManager from './EmployeeManager.jsx';
 import CreateEmployee from './CreateEmployee.jsx';
+import EmployeeDetail from './EmployeeDetail.jsx';
 import './data/initData.js';
 
 createRoot(document.getElementById('root')).render(
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')).render(
         <Route path='/productDetail' element={<ProductDetail/>} />
         <Route path='/employeeManager' element={<EmployeeManager/>}/>
         <Route path='/createEmployee' element={<CreateEmployee/>}/>
+        <Route path='/employeeDetail' element={<EmployeeDetail/>}/>
       </Routes>
     </Router>
   </StrictMode>,

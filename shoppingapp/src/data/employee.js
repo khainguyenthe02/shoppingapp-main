@@ -2,7 +2,7 @@ const employeeList = [
     {
         id: 1,
         name: 'Nguyễn Văn Hùng',
-        gender: true,
+        gender: 'nam',
         date: '14/07/2002',
         phone: '0938636653',
         email: 'hungnv02@gmail.com',
@@ -13,7 +13,7 @@ const employeeList = [
     {
         id: 2,
         name: 'Trần Thị Mai',
-        gender: false,
+        gender: 'nữ',
         date: '22/03/1998',
         phone: '0945123456',
         email: 'maitt98@gmail.com',
@@ -24,7 +24,7 @@ const employeeList = [
     {
         id: 3,
         name: 'Lê Văn Dũng',
-        gender: true,
+        gender: 'nam',
         date: '10/11/1995',
         phone: '0978654321',
         email: 'dungle@gmail.com',
@@ -35,7 +35,7 @@ const employeeList = [
     {
         id: 4,
         name: 'Phạm Thu Hương',
-        gender: false,
+        gender: 'nữ',
         date: '05/06/1990',
         phone: '0912345678',
         email: 'huongpham@gmail.com',
@@ -46,7 +46,7 @@ const employeeList = [
     {
         id: 5,
         name: 'Hoàng Minh Tú',
-        gender: true,
+        gender: 'nam',
         date: '19/09/1985',
         phone: '0988765432',
         email: 'tuhoang@gmail.com',
@@ -57,7 +57,7 @@ const employeeList = [
     {
         id: 6,
         name: 'Đỗ Thị Lan',
-        gender: false,
+        gender: 'nữ',
         date: '30/12/1989',
         phone: '0935123456',
         email: 'lan.do@gmail.com',

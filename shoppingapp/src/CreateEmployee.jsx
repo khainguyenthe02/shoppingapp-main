@@ -172,6 +172,7 @@ const CreateEmployee = () => {
                         type="radio"
                         name="gender"
                         value="nam"
+                        checked={formData.gender === "nam"}
                         className="form-radio-input"
                         onChange={handleChange}
                       /> Nam
@@ -180,7 +181,8 @@ const CreateEmployee = () => {
                       <input
                         type="radio"
                         name="gender"
-                        value="nu"
+                        value="nữ"
+                        checked={formData.gender === "nữ"}
                         className="form-radio-input"
                         onChange={handleChange}
                       /> Nữ
