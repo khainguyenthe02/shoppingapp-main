@@ -36,14 +36,25 @@ app.post('/upload/employee', employeeUpload.single('image'), (req, res) => {
     res.json({ image: `/images/employee/${req.file.filename}` });
 });
 // API upload ảnh cho product
-app.post('/upload/product', productUpload.single('productImage'), (req, res) => {
+app.post('/upload/product', productUpload.single('image'), (req, res) => {
+    console.log('File upload request received');
+    if (!req.file) {
+        console.error('No file uploaded');
+        return res.status(400).json({ error: 'No file uploaded' });
+    }
     res.json({ image: `/images/product/${req.file.filename}` });
 });
 
 // API upload ảnh cho user
-app.post('/upload/user', userUpload.single('userImage'), (req, res) => {
-    res.json({ filePath: `/images/user/${req.file.filename}` });
+app.post('/upload/user', userUpload.single('image'), (req, res) => {
+    console.log('File upload request received');
+    if (!req.file) {
+        console.error('No file uploaded');
+        return res.status(400).json({ error: 'No file uploaded' });
+    }
+    res.json({ image: `/images/user/${req.file.filename}` });
 });
+
 
 // Start server
 app.listen(PORT, () => {

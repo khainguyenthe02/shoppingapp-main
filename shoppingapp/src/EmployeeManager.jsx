@@ -65,6 +65,9 @@ const EmployeeManager = () => {
             const toCreateEmployee = () => {
                   navigate('/createEmployee');
             }
+            const ToEditEmployee = (emp) => {
+                  navigate('/editEmployee', { state: { employee: emp } });
+            };
 
 
             const deleteOrder = (id) => {
@@ -150,7 +153,7 @@ const EmployeeManager = () => {
                               <td className='character'>{order.position}</td>
                               <td className="action-buttons">
                                     <button className="action-btn view" onClick={() => viewOrderDetails(order)}><Eye size={16} /></button>
-                                    <button className="action-btn edit" ><Edit size={16} /></button>
+                                    <button className="action-btn edit" onClick={() => ToEditEmployee(order)} ><Edit size={16} /></button>
                                     <button className="action-btn delete" onClick={() => deleteOrder(order.id)}><Trash size={16} /></button>
                               </td>
                         </tr>
