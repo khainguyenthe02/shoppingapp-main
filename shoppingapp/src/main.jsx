@@ -12,6 +12,7 @@ import EmployeeManager from './EmployeeManager.jsx';
 import CreateEmployee from './CreateEmployee.jsx';
 import EditEmployee from './EditEmployee.jsx';
 import EmployeeDetail from './EmployeeDetail.jsx';
+import CreateProduct from './CreateProduct.jsx';
 import './data/initData.js';
 
 createRoot(document.getElementById('root')).render(
@@ -29,6 +30,7 @@ createRoot(document.getElementById('root')).render(
         <Route path='/createEmployee' element={<CreateEmployee/>}/>
         <Route path='/employeeDetail' element={<EmployeeDetail/>}/>
         <Route path='/editEmployee' element={<EditEmployee/>}/>
+        <Route path='/createProduct' element={<CreateProduct/>}/>
       </Routes>
     </Router>
   </StrictMode>,
