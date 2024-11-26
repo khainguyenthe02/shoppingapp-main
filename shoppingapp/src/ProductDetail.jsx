@@ -3,6 +3,7 @@ import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 
 const ProductDetail = () => {
   const navigate = useNavigate();
@@ -10,14 +11,14 @@ const ProductDetail = () => {
     const handleBackButtonClick = () => {
         navigate(-1);
     };
-  const sidebarItems = [
-    { id: 1, title: 'Quản lý đơn hàng'},
-    { id: 2, title: 'Quản lý sản phẩm', active: true  },
-    { id: 3, title: 'Quản lý nhân viên' },
-    { id: 4, title: 'Quản lý dịch vụ' },
-    { id: 5, title: 'Quản lý tin tức' },
-    { id: 6, title: 'Quản lý thống kê' }
-  ];
+    const sidebarItems = [
+      { id: 1, title: 'Quản lý đơn hàng', path: '/orderManager',  active: true }, 
+      { id: 2, title: 'Quản lý sản phẩm', path: '/productManager' },
+      { id: 3, title: 'Quản lý nhân viên', path: '/employeeManager' }, 
+      { id: 4, title: 'Quản lý dịch vụ', path: '/serviceManager' },
+      { id: 5, title: 'Quản lý tin tức', path: '/newsManager' }, 
+      { id: 6, title: 'Quản lý thống kê', path: '/statisticsManager' }
+];
 
   const location = useLocation();
   const order = location.state?.product;
@@ -35,13 +36,10 @@ const ProductDetail = () => {
           <h2 className="sidebar-title">Danh mục quản lý</h2>
           <ul className="sidebar-menu">
           {sidebarItems.map((item) => (
-                <li 
-                key={item.id} 
-                className={`sidebar-item ${item.active ? 'active' : ''}`}
-                >
-                {item.title}
-                </li>
-          ))}
+                        <li key={item.id} className={`sidebar-item ${item.active ? 'active' : ''}`}>
+                        <Link to={item.path} className="sidebar-link">{item.title}</Link>
+                        </li>
+                    ))}
           </ul>
         </div>
 
@@ -52,19 +50,19 @@ const ProductDetail = () => {
           <div className="order-grid">
             {/* Left Column - Order Details */}
             <div className="order-details">
-              <div className="detail-row">
+              <div className="detail-row-even">
                 <div className="detail-label">Mã sản phẩm</div>
                 <div className="detail-value">{order.id}</div>
               </div>
-              <div className="detail-row">
+              <div className="detail-row-old">
                 <div className="detail-label">Tên sản phẩm</div>
                 <div className="detail-value">{order.product}</div>
               </div>
-              <div className="detail-row">
+              <div className="detail-row-even">
                 <div className="detail-label">Giá</div>
                 <div className="detail-value">{order.price} VND</div>
               </div>
-              <div className="detail-row">
+              <div className="detail-row-old">
                         <div className="detail-label">Mô tả chi tiết sản phẩm</div>
                         <div className="detail-value">
                         {order.materials.map((material, index) => (

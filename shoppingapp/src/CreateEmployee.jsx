@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import { useNavigate } from 'react-router-dom'; 
@@ -54,7 +54,7 @@ const CreateEmployee = () => {
     if (!formData.email.trim()) newErrors.email = 'Email là bắt buộc.';
     if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email không hợp lệ.';
     if (!formData.gender) newErrors.gender = 'Giới tính là bắt buộc.';
-    if (!formData.date) newErrors.birthDate = 'Ngày sinh là bắt buộc.';
+    if (!formData.date) newErrors.date = 'Ngày sinh là bắt buộc.';
     if (!formData.address.trim()) newErrors.address = 'Địa chỉ là bắt buộc.';
     if (!formData.position.trim()) newErrors.position = 'Chức vụ là bắt buộc.';
 
@@ -68,6 +68,14 @@ const CreateEmployee = () => {
   
     if (validateForm()) {
       try {
+        // Kiểm tra xem nhân viên có id đó đã tồn tại hay chưa
+      const storedEmployees = JSON.parse(localStorage.getItem('employeeList')) || [];
+      const existingEmployee = storedEmployees.find(employee => employee.id === formData.id);
+
+      if (existingEmployee) {
+        alert('Nhân viên với mã này đã tồn tại!');
+        return;
+      }
         // Tạo FormData để gửi dữ liệu
         const data = new FormData();
         data.append('id', formData.id);
@@ -88,7 +96,8 @@ const CreateEmployee = () => {
         });
   
         if (response.status === 200) {
-          const filePath = response.data.message;  // Lấy đường dẫn ảnh từ message
+          console.log(response.data)
+          const filePath = response.data.image;  // Lấy đường dẫn ảnh từ message
   
           // Cập nhật formData.image với đường dẫn ảnh
           const newEmployee = { 

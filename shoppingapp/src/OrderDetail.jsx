@@ -3,7 +3,7 @@ import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import { useLocation } from 'react-router-dom';
 import productList from './data/product';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate, Link } from 'react-router-dom'; 
 
 const OrderDetail = () => {
   const navigate = useNavigate();
@@ -11,15 +11,14 @@ const OrderDetail = () => {
     const handleBackButtonClick = () => {
         navigate(-1);
     };
-  const sidebarItems = [
-    { id: 1, title: 'Quản lý đơn hàng', active: true },
-    { id: 2, title: 'Quản lý sản phẩm' },
-    { id: 3, title: 'Quản lý nhân viên' },
-    { id: 4, title: 'Quản lý dịch vụ' },
-    { id: 5, title: 'Quản lý tin tức' },
-    { id: 6, title: 'Quản lý thống kê' }
-  ];
-
+    const sidebarItems = [
+      { id: 1, title: 'Quản lý đơn hàng', path: '/orderManager',  active: true }, 
+      { id: 2, title: 'Quản lý sản phẩm', path: '/productManager' },
+      { id: 3, title: 'Quản lý nhân viên', path: '/employeeManager' }, 
+      { id: 4, title: 'Quản lý dịch vụ', path: '/serviceManager' },
+      { id: 5, title: 'Quản lý tin tức', path: '/newsManager' }, 
+      { id: 6, title: 'Quản lý thống kê', path: '/statisticsManager' }
+];
   const location = useLocation();
   const order = location.state?.product;
   console.log(order)
@@ -38,13 +37,10 @@ const OrderDetail = () => {
           <h2 className="sidebar-title">Danh mục quản lý</h2>
           <ul className="sidebar-menu">
           {sidebarItems.map((item) => (
-                <li 
-                key={item.id} 
-                className={`sidebar-item ${item.active ? 'active' : ''}`}
-                >
-                {item.title}
-                </li>
-          ))}
+                        <li key={item.id} className={`sidebar-item ${item.active ? 'active' : ''}`}>
+                        <Link to={item.path} className="sidebar-link">{item.title}</Link>
+                        </li>
+                    ))}
           </ul>
         </div>
 
@@ -55,19 +51,19 @@ const OrderDetail = () => {
           <div className="order-grid">
             {/* Left Column - Order Details */}
             <div className="order-details">
-              <div className="detail-row">
+              <div className="detail-row-even">
                 <div className="detail-label">Mã đơn hàng</div>
                 <div className="detail-value">{order.id}</div>
               </div>
-              <div className="detail-row">
+              <div className="detail-row-old">
                 <div className="detail-label">Tên khách hàng</div>
                 <div className="detail-value">{order.customer}</div>
               </div>
-              <div className="detail-row">
+              <div className="detail-row-even">
                 <div className="detail-label">Số điện thoại</div>
                 <div className="detail-value">{order.phone}</div>
               </div>
-              <div className="detail-row">
+              <div className="detail-row-old">
                 <div className="detail-label">Địa chỉ</div>
                 <div className="detail-value">{order.address}</div>
               </div>

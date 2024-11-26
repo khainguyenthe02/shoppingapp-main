@@ -2,7 +2,6 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import './Manager.css';
 import { Eye, Edit, Trash } from 'lucide-react';
-import orderList from './data/order';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import { Link } from 'react-router-dom';

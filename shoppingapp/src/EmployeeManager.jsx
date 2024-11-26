@@ -69,15 +69,16 @@ const EmployeeManager = () => {
 
             const deleteOrder = (id) => {
                   const confirmDelete = window.confirm("Bạn có chắc chắn muốn xóa nhân viên này?");
-
+              
                   if (confirmDelete) {
-                  setOrders((prevOrders) => {
-                        const updatedOrders = prevOrders.filter(order => order.id !== id);
-                        setFilteredOrders(updatedOrders);
-                        return updatedOrders;
-                  });
+                      setOrders((prevOrders) => {
+                          const updatedOrders = prevOrders.filter(order => order.id !== id);
+                          localStorage.setItem('employeeList', JSON.stringify(updatedOrders));
+                          setFilteredOrders(updatedOrders);
+                          return updatedOrders;
+                      });
                   }
-            };
+              };
       const sidebarItems = [
             { id: 1, title: 'Quản lý đơn hàng', path: '/orderManager' }, 
             { id: 2, title: 'Quản lý sản phẩm', path: '/productManager'},
